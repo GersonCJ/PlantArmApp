@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "173367826986",
+    "project_id": "plant-arm-project",
+    "storage_bucket": "plant-arm-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:173367826986:android:f7e432fb4fd612828c8153",
+        "android_client_info": {
+          "package_name": "com.plantarmgroup.plantarmapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "173367826986-01s91jche4f56nsdkapebj6pnf5i32b7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyDMEBVIO-kxZxl2F5pRgAa34TDye5ExU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "173367826986-01s91jche4f56nsdkapebj6pnf5i32b7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
