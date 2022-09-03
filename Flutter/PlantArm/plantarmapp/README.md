@@ -34,7 +34,7 @@ STEP 2 -
 Open the project in your favorite code editor, go to the terminal and create a new project's branch for changes your tests and changes.
 
 ```
-git checkout -b collaboratorName_branch_number
+git checkout -b PLAN-N
 ```
 STEP 3 - 
 
@@ -43,9 +43,13 @@ after do your changes, add, commit and push to github
 ```
 git add .
 git commit -m "type a message for your commit"
-git push -u origin collaboratorName_branch
+git push -u origin PLAN-N
 ```
-If the changes are pertinent a merge request may be done.
+The branch name must match the Task name on JIRA.
+
+Never commit an ERROR.
+
+If the changes are pertinent a pull request may be done.
 
 Each new created feature or test of a specific part of the code should be done in a different branch.
 
