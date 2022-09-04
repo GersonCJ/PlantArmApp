@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-void dialogOkBox(BuildContext context) {
+void dialogOkBox(BuildContext context, Object errorMessage) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
         backgroundColor: const Color.fromARGB(255, 0, 45, 0),
         title: const Text("Error...", style: TextStyle(color: Color.fromARGB(255, 0, 255, 0)),),
-        content: const Text("User not found", style: TextStyle(color: Color.fromARGB(255, 0, 255, 0)),),
+        content: Text('$errorMessage', style: const TextStyle(color: Color.fromARGB(255, 0, 255, 0)),),
         actions: [
           TextButton(
             onPressed: () {

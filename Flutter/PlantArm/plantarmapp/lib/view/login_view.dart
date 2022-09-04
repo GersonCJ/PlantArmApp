@@ -80,9 +80,7 @@ class _LoginViewState extends State<LoginView> {
                       password: password);
                       print(userCredential);
                     } on FirebaseAuthException catch (e){
-                      if (e.code == 'user-not-found'){
-                        dialogOkBox(context);
-                      }
+                        dialogOkBox(context, e.code);
                     }
                   }), style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 0, 45, 0)),
