@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:plantarmapp/dialog/dialog_ok_box.dart';
 import 'package:plantarmapp/firebase_options.dart';
 
 class LoginView extends StatefulWidget {
@@ -70,12 +71,19 @@ class _LoginViewState extends State<LoginView> {
                     ),
                   ),
                   TextButton(onPressed: (() async {
+                    try {
+
                     final username = _email.text;
                     final password = _password.text;
                     final userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
                       email: username,
                       password: password);
                       print(userCredential);
+                    } on FirebaseAuthException catch (e){
+                      if (e.code == 'user-not-found'){
+                        dialogOkBox(context);
+                      }
+                    }
                   }), style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 0, 45, 0)),
                         foregroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 0, 255, 0))),
