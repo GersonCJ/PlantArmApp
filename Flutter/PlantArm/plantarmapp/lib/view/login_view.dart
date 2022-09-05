@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:plantarmapp/dialog/dialog_ok_box.dart';
 import 'package:plantarmapp/firebase_options.dart';
+import 'package:intl/intl.dart' show toBeginningOfSentenceCase;
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -78,9 +79,10 @@ class _LoginViewState extends State<LoginView> {
                     final userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
                       email: username,
                       password: password);
-                      print(userCredential);
                     } on FirebaseAuthException catch (e){
-                        dialogOkBox(context, e.code);
+                        final messageError = e.code.toString();
+                        final treatedMessageError = toBeginningOfSentenceCase(messageError.split('-').join(' ')).toString();
+                        dialogOkBox(context, treatedMessageError);
                     }
                   }), style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 0, 45, 0)),

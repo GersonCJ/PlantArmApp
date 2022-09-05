@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:plantarmapp/dialog/dialog_ok_box.dart';
 import 'package:plantarmapp/firebase_options.dart';
+import 'package:intl/intl.dart' show toBeginningOfSentenceCase;
 
 
 class RegisterView extends StatefulWidget {
@@ -72,12 +74,21 @@ class _RegisterViewState extends State<RegisterView> {
                     ),
                   ),
                   TextButton(onPressed: (() async {
-                    final username = _email.text;
-                    final password = _password.text;
-                    final userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                      email: username,
-                      password: password);
-                      print(userCredential);
+                    try{
+                      final username = _email.text;
+                      final password = _password.text;
+                      final userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                        email: username,
+                        password: password);
+                    }
+                    on FirebaseAuthException catch (e){
+                      final messageError = e.code.toString();
+                      final treatedMessageError = toBeginningOfSentenceCase(messageError.split('-').join(' ')).toString();
+                      dialogOkBox(context, treatedMessageError);
+                      
+                      
+                    }
+                      
                   }), style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 0, 45, 0)),
                         foregroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 0, 255, 0))),
