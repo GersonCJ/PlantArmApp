@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:plantarmapp/dialog/dialog_ok_box.dart';
 import 'package:plantarmapp/firebase_options.dart';
+import 'package:intl/intl.dart' show toBeginningOfSentenceCase;
 
 
 class RegisterView extends StatefulWidget {
@@ -81,7 +82,10 @@ class _RegisterViewState extends State<RegisterView> {
                         password: password);
                     }
                     on FirebaseAuthException catch (e){
-                      dialogOkBox(context, e.code);
+                      final messageError = e.code.toString();
+                      final treatedMessageError = toBeginningOfSentenceCase(messageError.split('-').join(' ')).toString();
+                      dialogOkBox(context, treatedMessageError);
+                      
                       
                     }
                       
