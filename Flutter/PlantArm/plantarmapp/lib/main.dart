@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:plantarmapp/view/login_view.dart';
-import 'package:plantarmapp/view/register_view.dart';
+import 'package:plantarmapp/view/home_page_view.dart';
 
 
 void main() {
@@ -11,6 +10,6 @@ void main() {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LoginView(),
+      home: const HomePage(),
     ),);
 }
