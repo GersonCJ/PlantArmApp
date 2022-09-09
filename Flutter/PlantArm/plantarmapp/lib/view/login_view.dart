@@ -86,7 +86,7 @@ class _LoginViewState extends State<LoginView> {
                         dialogOkBox(context, treatedMessageError);
                         if (e.code == 'user-not-found'){
                         final complement = '$treatedMessageError. Would you like to Register a new user ?';
-                        dialogPushCancelBox(context, complement);
+                        dialogPushCancelBox(context, complement, 'RegisterView');
                       } else {
                         dialogOkBox(context, treatedMessageError);
                       }

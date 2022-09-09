@@ -87,7 +87,7 @@ class _RegisterViewState extends State<RegisterView> {
                       final treatedMessageError = toBeginningOfSentenceCase(messageError.split('-').join(' ')).toString();
                       if (e.code == 'email-already-in-use'){
                         final complement = '$treatedMessageError. Would you like to go to Login ?';
-                        dialogPushCancelBox(context, complement);
+                        dialogPushCancelBox(context, complement, 'LoginView');
                       } else {
                         dialogOkBox(context, treatedMessageError);
                       }
