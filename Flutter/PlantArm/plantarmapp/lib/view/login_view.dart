@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:plantarmapp/dialog/dialog_ok_box.dart';
+import 'package:plantarmapp/dialog/dialog_push_cancel_box.dart';
 import 'package:plantarmapp/firebase_options.dart';
 import 'package:intl/intl.dart' show toBeginningOfSentenceCase;
 
@@ -83,6 +84,12 @@ class _LoginViewState extends State<LoginView> {
                         final messageError = e.code.toString();
                         final treatedMessageError = toBeginningOfSentenceCase(messageError.split('-').join(' ')).toString();
                         dialogOkBox(context, treatedMessageError);
+                        if (e.code == 'user-not-found'){
+                        final complement = '$treatedMessageError. Would you like to Register a new user ?';
+                        dialogPushCancelBox(context, complement);
+                      } else {
+                        dialogOkBox(context, treatedMessageError);
+                      }
                     }
                   }), style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 0, 45, 0)),

@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:plantarmapp/firebase_options.dart';
+import 'package:plantarmapp/view/login_view.dart';
+import 'package:plantarmapp/view/register_view.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -29,7 +31,32 @@ class HomePage extends StatelessWidget {
               } else {
                 print('You have to verify your e-mail.');
               }
-              return const Text('Done');
+              return Column(
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const RegisterView())
+                      );
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 0, 45, 0)),
+                      foregroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 0, 255, 0))),
+                    child: const Text('Register')),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const LoginView(),)
+                      );
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 0, 45, 0)),
+                      foregroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 0, 255, 0))),
+                    child: const Text('Login'))
+                ],
+              );
               default:
                 return const Text('Loading...');
 
