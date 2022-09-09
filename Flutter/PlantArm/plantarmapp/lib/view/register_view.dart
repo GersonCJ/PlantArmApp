@@ -91,10 +91,7 @@ class _RegisterViewState extends State<RegisterView> {
                       } else {
                         dialogOkBox(context, treatedMessageError);
                       }
-                      
-                      
                     }
-                      
                   }), style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 0, 45, 0)),
                         foregroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 0, 255, 0))),
