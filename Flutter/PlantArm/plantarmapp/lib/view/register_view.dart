@@ -1,10 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:plantarmapp/dialog/dialog_ok_box.dart';
 import 'package:plantarmapp/dialog/dialog_push_cancel_box.dart';
-import 'package:plantarmapp/firebase_options.dart';
 import 'package:intl/intl.dart' show toBeginningOfSentenceCase;
+import 'package:plantarmapp/dialog/dialog_verification_box.dart';
 
 
 class RegisterView extends StatefulWidget {
@@ -43,68 +42,59 @@ class _RegisterViewState extends State<RegisterView> {
         backgroundColor: const Color.fromARGB(255, 0, 45, 0),
         foregroundColor: const Color.fromARGB(255, 0, 255, 0),
       ),
-      body: FutureBuilder(
-        future: Firebase.initializeApp(
-          options: DefaultFirebaseOptions.currentPlatform
-        ),
-        builder: (context, snapshot){
-
-          switch (snapshot.connectionState){
-            
-            case ConnectionState.done:
-              return Column(
-                children: [
-                  TextField(
-                    controller: _email,
-                    enableSuggestions: false,
-                    autocorrect: false,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: const InputDecoration(
-                      hintText: 'Email',
-                      hintStyle: TextStyle(color: Colors.black),
-                    ),
-                  ),
-                  TextField(
-                    controller: _password,
-                    enableSuggestions: false,
-                    autocorrect: false,
-                    obscureText: true,
-                    decoration: const InputDecoration(
-                      hintText: 'Password',
-                      hintStyle: TextStyle(color: Colors.black),
-                    ),
-                  ),
-                  TextButton(onPressed: (() async {
-                    try{
-                      final username = _email.text;
-                      final password = _password.text;
-                      final userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                        email: username,
-                        password: password);
-                    }
-                    on FirebaseAuthException catch (e){
-                      final messageError = e.code.toString();
-                      final treatedMessageError = toBeginningOfSentenceCase(messageError.split('-').join(' ')).toString();
-                      if (e.code == 'email-already-in-use'){
-                        final complement = '$treatedMessageError. Would you like to go to Login ?';
-                        dialogPushCancelBox(context, complement, 'LoginView');
-                      } else {
-                        dialogOkBox(context, treatedMessageError);
-                      }
-                    }
-                  }), style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 0, 45, 0)),
-                        foregroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 0, 255, 0))),
-                      child: 
-                        const Text('Register')),
-                ],
-              );
-              default:
-                return const Text('Loading...');
-
+      body:
+        Column(
+          children: [
+            TextField(
+              controller: _email,
+              enableSuggestions: false,
+              autocorrect: false,
+              keyboardType: TextInputType.emailAddress,
+              decoration: const InputDecoration(
+                hintText: 'Email',
+                hintStyle: TextStyle(color: Colors.black),
+              ),
+            ),
+            TextField(
+              controller: _password,
+              enableSuggestions: false,
+              autocorrect: false,
+              obscureText: true,
+              decoration: const InputDecoration(
+                hintText: 'Password',
+                hintStyle: TextStyle(color: Colors.black),
+              ),
+            ),
+            TextButton(onPressed: (() async {
+              try{
+                final username = _email.text;
+                final password = _password.text;
+                final userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                  email: username,
+                  password: password);
+              }
+              on FirebaseAuthException catch (e){
+                final messageError = e.code.toString();
+                final treatedMessageError = toBeginningOfSentenceCase(messageError.split('-').join(' ')).toString();
+                if (e.code == 'email-already-in-use'){
+                  final complement = '$treatedMessageError. Would you like to go to Login ?';
+                  dialogPushCancelBox(context, complement, 'LoginView');
+                } else {
+                  dialogOkBox(context, treatedMessageError);
+                }
+              }
+              final user = FirebaseAuth.instance.currentUser;
+                if (user?.emailVerified ?? false){
+                }else {
+                  if (!mounted) return;
+                  dialogVerificationBox(context);
+                }
+            }), style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 0, 45, 0)),
+                  foregroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 0, 255, 0))),
+                child: 
+                  const Text('Register')),
+          ],
+        ));
           }
         }
-      )
-    );
-  }
-}
