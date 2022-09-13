@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:plantarmapp/dialog/dialog_ok_box.dart';
 import 'package:plantarmapp/dialog/dialog_push_cancel_box.dart';
 import 'package:intl/intl.dart' show toBeginningOfSentenceCase;
+import 'package:plantarmapp/dialog/dialog_verification_box.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -64,22 +65,28 @@ class _LoginViewState extends State<LoginView> {
               ),
               TextButton(onPressed: (() async {
                 try {
-
                 final username = _email.text;
                 final password = _password.text;
                 final userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
                   email: username,
                   password: password);
-                } on FirebaseAuthException catch (e){
-                    final messageError = e.code.toString();
-                    final treatedMessageError = toBeginningOfSentenceCase(messageError.split('-').join(' ')).toString();
-                    dialogOkBox(context, treatedMessageError);
-                    if (e.code == 'user-not-found'){
-                    final complement = '$treatedMessageError. Would you like to Register a new user ?';
-                    dialogPushCancelBox(context, complement, 'RegisterView');
-                  } else {
-                    dialogOkBox(context, treatedMessageError);
-                  }
+                }
+                on FirebaseAuthException catch (e){
+                  final messageError = e.code.toString();
+                  final treatedMessageError = toBeginningOfSentenceCase(messageError.split('-').join(' ')).toString();
+                  dialogOkBox(context, treatedMessageError);
+                  if (e.code == 'user-not-found'){
+                  final complement = '$treatedMessageError. Would you like to Register a new user ?';
+                  dialogPushCancelBox(context, complement, 'RegisterView');
+                } else {
+                  dialogOkBox(context, treatedMessageError);
+                }
+                }
+                final user = FirebaseAuth.instance.currentUser;
+                if (user?.emailVerified ?? false){
+                }else {
+                  if (!mounted) return;
+                  dialogVerificationBox(context);
                 }
               }), style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 0, 45, 0)),

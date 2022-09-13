@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:plantarmapp/dialog/dialog_ok_box.dart';
 import 'package:plantarmapp/dialog/dialog_push_cancel_box.dart';
 import 'package:intl/intl.dart' show toBeginningOfSentenceCase;
+import 'package:plantarmapp/dialog/dialog_verification_box.dart';
 
 
 class RegisterView extends StatefulWidget {
@@ -82,6 +83,12 @@ class _RegisterViewState extends State<RegisterView> {
                   dialogOkBox(context, treatedMessageError);
                 }
               }
+              final user = FirebaseAuth.instance.currentUser;
+                if (user?.emailVerified ?? false){
+                }else {
+                  if (!mounted) return;
+                  dialogVerificationBox(context);
+                }
             }), style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 0, 45, 0)),
                   foregroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 0, 255, 0))),
