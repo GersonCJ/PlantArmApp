@@ -21,9 +21,10 @@ void dialogPushCancelBox(BuildContext context, String errorMessage, String scree
             child: const Text('Cancel', style: TextStyle(color: Color.fromARGB(255, 0, 255, 0)))),
           TextButton(
             onPressed: () {
-              Navigator.pushReplacement(
-                context, 
-                MaterialPageRoute(builder: (screen == 'LoginView') ? (context) => const LoginView() : (context) => const RegisterView()));
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                (screen == 'LoginView') ? '/login/' : '/register/',
+                (route) => false
+              );
             },
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 0, 45, 0)),
