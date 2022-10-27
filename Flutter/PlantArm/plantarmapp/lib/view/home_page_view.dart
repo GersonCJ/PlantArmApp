@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('PlantArm'),
+        title: const Text('HydroPlant'),
         backgroundColor: const Color.fromARGB(255, 0, 45, 0),
         foregroundColor: const Color.fromARGB(255, 0, 255, 0),
       ),

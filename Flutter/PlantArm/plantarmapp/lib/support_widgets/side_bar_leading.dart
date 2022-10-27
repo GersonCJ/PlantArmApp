@@ -5,8 +5,26 @@ class SideBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Drawer(
-      
+    return Drawer(
+      backgroundColor: const Color.fromARGB(255, 0, 45, 0),
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: const [
+          DrawerHeader(
+            decoration: BoxDecoration(
+              color: Colors.green,
+              image: DecorationImage(
+                image: AssetImage('assets/images/hydroplant.png'),
+                fit: BoxFit.cover,
+                ),
+            ),
+            child: Text(''),
+          ),
+          ListTile(
+
+          ),
+        ],
+      ),
     );
   }
 }

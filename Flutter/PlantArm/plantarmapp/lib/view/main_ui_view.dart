@@ -14,7 +14,7 @@ class _MainUiViewState extends State<MainUiView> {
     return Scaffold(
       drawer: const SideBar(),
       appBar: AppBar(
-        title: const Text('PlantArm'),
+        title: const Text('HydroPlant'),
         backgroundColor: const Color.fromARGB(255, 0, 45, 0),
         foregroundColor: const Color.fromARGB(255, 0, 255, 0),
         
