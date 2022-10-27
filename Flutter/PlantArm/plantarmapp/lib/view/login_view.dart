@@ -4,6 +4,7 @@ import 'package:plantarmapp/dialog/dialog_ok_box.dart';
 import 'package:plantarmapp/dialog/dialog_push_cancel_box.dart';
 import 'package:intl/intl.dart' show toBeginningOfSentenceCase;
 import 'package:plantarmapp/dialog/dialog_verification_box.dart';
+import 'package:plantarmapp/view/main_ui_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -84,6 +85,11 @@ class _LoginViewState extends State<LoginView> {
                 }
                 final user = FirebaseAuth.instance.currentUser;
                 if (user?.emailVerified ?? false){
+                  if (!mounted) return;
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                    '/mainui/',
+                    (route) => false
+              );
                 }else {
                   if (!mounted) return;
                   dialogVerificationBox(context);

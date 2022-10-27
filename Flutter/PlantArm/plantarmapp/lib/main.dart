@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plantarmapp/view/home_page_view.dart';
 import 'package:plantarmapp/view/login_view.dart';
+import 'package:plantarmapp/view/main_ui_view.dart';
 import 'package:plantarmapp/view/register_view.dart';
 
 
@@ -16,6 +17,7 @@ void main() {
       routes: {
         '/login/': (context) => const LoginView(),
         '/register/': (context) => const RegisterView(),
+        '/mainui/': (context) => const MainUiView(),
       }
     ),);
 }
