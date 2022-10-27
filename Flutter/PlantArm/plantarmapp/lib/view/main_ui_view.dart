@@ -19,6 +19,7 @@ class _MainUiViewState extends State<MainUiView> {
         foregroundColor: const Color.fromARGB(255, 0, 255, 0),
         
       ),
+      body: const Text('Main Ui Statistics'),
       
     );
   }
