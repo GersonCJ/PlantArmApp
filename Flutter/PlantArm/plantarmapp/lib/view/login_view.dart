@@ -4,7 +4,6 @@ import 'package:plantarmapp/dialog/dialog_ok_box.dart';
 import 'package:plantarmapp/dialog/dialog_push_cancel_box.dart';
 import 'package:intl/intl.dart' show toBeginningOfSentenceCase;
 import 'package:plantarmapp/dialog/dialog_verification_box.dart';
-import 'package:plantarmapp/view/main_ui_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);

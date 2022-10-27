@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:plantarmapp/view/login_view.dart';
-import 'package:plantarmapp/view/register_view.dart';
 
 void dialogPushCancelBox(BuildContext context, String errorMessage, String screen) {
   showDialog(
