@@ -29,7 +29,10 @@ class SideBar extends StatelessWidget {
               )),
             textColor: const Color.fromARGB(255, 0, 255, 0),
             iconColor: const Color.fromARGB(255, 0, 255, 0),
-            onTap: () => null,
+            onTap: () => {
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                '/mainuisettings/',
+                (route) => false)},
           ),
           const Divider(
             thickness: 2.0,
