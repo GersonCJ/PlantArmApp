@@ -64,7 +64,7 @@ class _MainUiSettingsViewState extends State<MainUiSettingsView> {
                     Row(
                       children: [
                         const Text(
-                          'Air Temperature: ',
+                          'Air Temperature:  ',
                           style: TextStyle(
                             fontSize: 20,
                             color: Color.fromARGB(255, 0, 255, 0),
@@ -80,6 +80,7 @@ class _MainUiSettingsViewState extends State<MainUiSettingsView> {
                               keyboardType: TextInputType.number,
                               style: const TextStyle(
                                 color: Color.fromARGB(255, 0, 255, 0)),
+                              textAlign: TextAlign.center,
                               decoration: const InputDecoration(
                                 fillColor: Color.fromARGB(255, 0, 255, 0),
                                 focusedBorder: OutlineInputBorder(
@@ -127,29 +128,159 @@ class _MainUiSettingsViewState extends State<MainUiSettingsView> {
                 ),   
             ),
             SizedBox(
-              height: 168,
+              height: 130,
               child:
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: 
                   Row(
-                    children: const [
-                      Text(
-                        'Luminosity: ',
+                    children: [
+                      const Text(
+                        'PH: ',
                         style: TextStyle(
                           fontSize: 20,
                           color: Color.fromARGB(255, 0, 255, 0),
                         )
                       ),
-                      Text('Input'),
+                      SizedBox(
+                        width: 50,
+                        child:      
+                          TextField(
+                            controller: _ph1,
+                            enableSuggestions: true,
+                            autocorrect: false,
+                            keyboardType: TextInputType.number,
+                            style: const TextStyle(
+                              color: Color.fromARGB(255, 0, 255, 0)
+                            ),
+                            textAlign: TextAlign.center,
+                            decoration: const InputDecoration(
+                              hintText: 'Min',
+                              hintStyle: TextStyle(
+                                color: Color.fromARGB(255, 0, 255, 0)
+                              ),
+                              fillColor: Color.fromARGB(255, 0, 255, 0),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Color.fromARGB(255, 0, 255, 0)),
+                              ),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Color.fromARGB(255, 0, 255, 0))
+                              ),
+                            ),
+                            cursorColor: const Color.fromARGB(255, 0, 255, 0),
+                          ),
+                      ),
+                      const SizedBox(width: 20,),
+                      SizedBox(
+                        width: 50,
+                        child:      
+                          TextField(
+                            controller: _ph2,
+                            enableSuggestions: true,
+                            autocorrect: false,
+                            keyboardType: TextInputType.number,
+                            style: const TextStyle(
+                              color: Color.fromARGB(255, 0, 255, 0)
+                            ),
+                            textAlign: TextAlign.center,
+                            decoration: const InputDecoration(
+                              hintText: 'Max',
+                              hintStyle: TextStyle(
+                                color: Color.fromARGB(255, 0, 255, 0)
+                              ),
+                              fillColor: Color.fromARGB(255, 0, 255, 0),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Color.fromARGB(255, 0, 255, 0)),
+                              ),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Color.fromARGB(255, 0, 255, 0))
+                              ),
+                            ),
+                            cursorColor: const Color.fromARGB(255, 0, 255, 0),
+                          ),
+                      ),
                     ],
                   ),
                 ),   
-            ), 
+            ),
+            SizedBox(
+              height: 130,
+              child:
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: 
+                  Row(
+                    children: [
+                      const Text(
+                        'Conductivity: ',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Color.fromARGB(255, 0, 255, 0),
+                        )
+                      ),
+                      SizedBox(
+                        width: 50,
+                        child:      
+                          TextField(
+                            controller: _conductivity1,
+                            enableSuggestions: true,
+                            autocorrect: false,
+                            keyboardType: TextInputType.number,
+                            style: const TextStyle(
+                              color: Color.fromARGB(255, 0, 255, 0)
+                            ),
+                            textAlign: TextAlign.center,
+                            decoration: const InputDecoration(
+                              hintText: 'Min',
+                              hintStyle: TextStyle(
+                                color: Color.fromARGB(255, 0, 255, 0)
+                              ),
+                              fillColor: Color.fromARGB(255, 0, 255, 0),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Color.fromARGB(255, 0, 255, 0)),
+                              ),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Color.fromARGB(255, 0, 255, 0))
+                              ),
+                            ),
+                            cursorColor: const Color.fromARGB(255, 0, 255, 0),
+                          ),
+                      ),
+                      const SizedBox(width: 20,),
+                      SizedBox(
+                        width: 50,
+                        child:      
+                          TextField(
+                            controller: _conductivity2,
+                            enableSuggestions: true,
+                            autocorrect: false,
+                            keyboardType: TextInputType.number,
+                            style: const TextStyle(
+                              color: Color.fromARGB(255, 0, 255, 0)
+                            ),
+                            textAlign: TextAlign.center,
+                            decoration: const InputDecoration(
+                              hintText: 'Max',
+                              hintStyle: TextStyle(
+                                color: Color.fromARGB(255, 0, 255, 0)
+                              ),
+                              fillColor: Color.fromARGB(255, 0, 255, 0),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Color.fromARGB(255, 0, 255, 0)),
+                              ),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Color.fromARGB(255, 0, 255, 0))
+                              ),
+                            ),
+                            cursorColor: const Color.fromARGB(255, 0, 255, 0),
+                          ),
+                      ),
+                    ],
+                  ),
+                ),   
+            ),
           ],
         ),
-        
-      
     );
   }
 }
