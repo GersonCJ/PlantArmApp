@@ -51,6 +51,7 @@ class _MainUiSettingsViewState extends State<MainUiSettingsView> {
         foregroundColor: const Color.fromARGB(255, 0, 255, 0),
         
       ),
+      resizeToAvoidBottomInset: false,
       body:
         Column(
           children: [ 
@@ -103,12 +104,13 @@ class _MainUiSettingsViewState extends State<MainUiSettingsView> {
                 ),   
             ),
             SizedBox(
+              height: 130,
               child:
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: 
                   Row(
-                    children: const[
+                    children: const [
                       Text(
                         'Luminosity: ',
                         style: TextStyle(
@@ -119,7 +121,7 @@ class _MainUiSettingsViewState extends State<MainUiSettingsView> {
                       SizedBox(
                         width: 200,
                         child: DropdownLuminosity()
-                      ),
+                      )
                     ],
                   ),
                 ),   
