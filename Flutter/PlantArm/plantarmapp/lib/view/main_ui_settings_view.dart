@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plantarmapp/support_widgets/drop_down_menu_luminosity.dart';
 import 'package:plantarmapp/support_widgets/side_bar_leading.dart';
 
 class MainUiSettingsView extends StatefulWidget {
@@ -54,7 +55,7 @@ class _MainUiSettingsViewState extends State<MainUiSettingsView> {
         Column(
           children: [ 
             SizedBox(
-              height: 168,
+              height: 130,
               child:
                 Padding(
                   padding: const EdgeInsets.all(16.0),
@@ -84,7 +85,8 @@ class _MainUiSettingsViewState extends State<MainUiSettingsView> {
                                   borderSide: BorderSide(color: Color.fromARGB(255, 0, 255, 0)),
                                 ),
                                 enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color.fromARGB(255, 0, 255, 0))),
+                                  borderSide: BorderSide(color: Color.fromARGB(255, 0, 255, 0))
+                                ),
                               ),
                               cursorColor: const Color.fromARGB(255, 0, 255, 0),
                             ),
@@ -101,7 +103,6 @@ class _MainUiSettingsViewState extends State<MainUiSettingsView> {
                 ),   
             ),
             SizedBox(
-              // height: 168,
               child:
                 Padding(
                   padding: const EdgeInsets.all(16.0),
@@ -115,7 +116,10 @@ class _MainUiSettingsViewState extends State<MainUiSettingsView> {
                           color: Color.fromARGB(255, 0, 255, 0),
                         )
                       ),
-                      Text('Input'),
+                      SizedBox(
+                        width: 200,
+                        child: DropdownLuminosity()
+                      ),
                     ],
                   ),
                 ),   
