@@ -39,6 +39,7 @@ dependencies:
   firebase_analytics: ^9.3.2
   intl: ^0.17.0
   get: ^4.6.5
+  graphic: ^1.0.0
 
 dev_dependencies:
   flutter_test:

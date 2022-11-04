@@ -12,7 +12,6 @@ class MainUiSettingsView extends StatefulWidget {
 class _MainUiSettingsViewState extends State<MainUiSettingsView> {
 
   late final TextEditingController _temperature;
-  late final TextEditingController _luminosity;
   late final TextEditingController _ph1;
   late final TextEditingController _ph2;
   late final TextEditingController _conductivity1;
@@ -21,7 +20,6 @@ class _MainUiSettingsViewState extends State<MainUiSettingsView> {
   @override
   void initState() {
     _temperature = TextEditingController();
-    _luminosity = TextEditingController();
     _ph1 = TextEditingController();
     _ph2 = TextEditingController();
     _conductivity1 = TextEditingController();
@@ -31,12 +29,11 @@ class _MainUiSettingsViewState extends State<MainUiSettingsView> {
 
   @override
   void dispose() {
-     _temperature = TextEditingController();
-    _luminosity = TextEditingController();
-    _ph1 = TextEditingController();
-    _ph2 = TextEditingController();
-    _conductivity1 = TextEditingController();
-    _conductivity2 = TextEditingController();
+     _temperature.dispose();
+    _ph1.dispose();
+    _ph2.dispose();
+    _conductivity1.dispose();
+    _conductivity2.dispose();
     super.dispose();
   }
 
