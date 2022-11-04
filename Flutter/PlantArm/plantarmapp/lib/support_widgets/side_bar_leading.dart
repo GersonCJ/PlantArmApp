@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class SideBar extends StatelessWidget {
   const SideBar({super.key});
 
@@ -29,10 +30,15 @@ class SideBar extends StatelessWidget {
               )),
             textColor: const Color.fromARGB(255, 0, 255, 0),
             iconColor: const Color.fromARGB(255, 0, 255, 0),
-            onTap: () => {
-              Navigator.of(context).pushNamedAndRemoveUntil(
-                '/mainuisettings/',
-                (route) => false)},
+            onTap: () {
+              if(ModalRoute.of(context)?.settings.name == '/mainui/'){
+                Navigator.pop(context);
+              }else{
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                '/mainui/',
+                (route) => false);
+              }
+              },
           ),
           const Divider(
             thickness: 2.0,
@@ -47,10 +53,15 @@ class SideBar extends StatelessWidget {
             // selectedTileColor: const Color.fromARGB(255, 251, 255, 0),
             textColor: const Color.fromARGB(255, 0, 255, 0),
             iconColor: const Color.fromARGB(255, 0, 255, 0),
-            onTap: () => {
-              Navigator.of(context).pushNamedAndRemoveUntil(
-                '/mainui/',
-                (route) => false)},
+            onTap: () {
+              if(ModalRoute.of(context)?.settings.name == '/mainuisettings/'){
+                Navigator.pop(context);
+              }else{
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                '/mainuisettings/',
+                (route) => false);
+              }
+              },
           ),
         ],
       ),
