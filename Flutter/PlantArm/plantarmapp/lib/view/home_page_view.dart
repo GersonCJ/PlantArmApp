@@ -10,52 +10,52 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('HydroPlant'),
-        backgroundColor: const Color.fromARGB(255, 0, 45, 0),
-        foregroundColor: const Color.fromARGB(255, 0, 255, 0),
-      ),
-      body: FutureBuilder(
-        future: Firebase.initializeApp(
-          options: DefaultFirebaseOptions.currentPlatform
+        appBar: AppBar(
+          title: const Text('HydroPlant'),
+          backgroundColor: const Color.fromARGB(255, 0, 45, 0),
+          foregroundColor: const Color.fromARGB(255, 0, 255, 0),
         ),
-        builder: (context, snapshot){
-
-          switch (snapshot.connectionState){
-            
-            case ConnectionState.done: 
-              return Column(
-                children: [
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const RegisterView())
-                      );
-                    },
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 0, 45, 0)),
-                      foregroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 0, 255, 0))),
-                    child: const Text('Register')),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const LoginView(),)
-                      );
-                    },
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 0, 45, 0)),
-                      foregroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 0, 255, 0))),
-                    child: const Text('Login'))
-                ],
-              );
-              default:
-                return const Text('Loading...');
-
-          }
-        }
-      )
-    );
+        body: FutureBuilder(
+            future: Firebase.initializeApp(
+                options: DefaultFirebaseOptions.currentPlatform),
+            builder: (context, snapshot) {
+              switch (snapshot.connectionState) {
+                case ConnectionState.done:
+                  return Column(
+                    children: [
+                      TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const RegisterView()));
+                          },
+                          style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(
+                                  const Color.fromARGB(255, 0, 45, 0)),
+                              foregroundColor: MaterialStateProperty.all(
+                                  const Color.fromARGB(255, 0, 255, 0))),
+                          child: const Text('Register')),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const LoginView(),
+                                ));
+                          },
+                          style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(
+                                  const Color.fromARGB(255, 0, 45, 0)),
+                              foregroundColor: MaterialStateProperty.all(
+                                  const Color.fromARGB(255, 0, 255, 0))),
+                          child: const Text('Login'))
+                    ],
+                  );
+                default:
+                  return const Text('Loading...');
+              }
+            }));
   }
 }

@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "173367826986",
+    "firebase_url": "https://plant-arm-project-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "plant-arm-project",
     "storage_bucket": "plant-arm-project.appspot.com"
   },
