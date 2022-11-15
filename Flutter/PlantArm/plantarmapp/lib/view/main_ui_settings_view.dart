@@ -1,6 +1,9 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:plantarmapp/dialog/dialog_ok_box.dart';
 import 'package:plantarmapp/support_widgets/side_bar_leading.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 // ------------------------------------------------------------------------------------- Drop_down_menu_pre-defined-list
 
@@ -473,6 +476,10 @@ class _MainUiSettingsViewState extends State<MainUiSettingsView> {
                 setState(() {
                   keyDropdown.currentState!.selectedValue = 'Choose...';
                 });
+                FirebaseFirestore.instance
+                    .collection('/SendingValuesEsp')
+                    .doc('Parameters')
+                    .set(sendingValues);
 
                 print('cond 3 -ok');
               }

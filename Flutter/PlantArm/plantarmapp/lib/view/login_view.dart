@@ -62,12 +62,14 @@ class _LoginViewState extends State<LoginView> {
             ),
             TextButton(
                 onPressed: () async {
+                  bool isSigned = false;
                   try {
                     final username = _email.text;
                     final password = _password.text;
                     final userCredential = await FirebaseAuth.instance
                         .signInWithEmailAndPassword(
                             email: username, password: password);
+                    isSigned = true;
                   } on FirebaseAuthException catch (e) {
                     final messageError = e.code.toString();
                     final treatedMessageError = toBeginningOfSentenceCase(
@@ -82,14 +84,16 @@ class _LoginViewState extends State<LoginView> {
                       dialogOkBox(context, treatedMessageError);
                     }
                   }
-                  final user = FirebaseAuth.instance.currentUser;
-                  if (user?.emailVerified ?? false) {
-                    if (!mounted) return;
-                    Navigator.of(context)
-                        .pushNamedAndRemoveUntil('/mainui/', (route) => false);
-                  } else {
-                    if (!mounted) return;
-                    dialogVerificationBox(context);
+                  if (isSigned) {
+                    final user = FirebaseAuth.instance.currentUser;
+                    if (user?.emailVerified ?? false) {
+                      if (!mounted) return;
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                          '/mainui/', (route) => false);
+                    } else {
+                      if (!mounted) return;
+                      dialogVerificationBox(context);
+                    }
                   }
                 },
                 style: ButtonStyle(
