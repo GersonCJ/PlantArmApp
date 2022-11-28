@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:plantarmapp/support_widgets/futue_data_measure.dart';
 import 'package:plantarmapp/support_widgets/side_bar_leading.dart';
 
 class MainUiView extends StatefulWidget {
@@ -20,8 +22,8 @@ class _MainUiViewState extends State<MainUiView> {
       ),
       backgroundColor: const Color.fromARGB(255, 0, 45, 0),
       body: Column(
-        children: const [
-          SizedBox(
+        children: [
+          const SizedBox(
             height: 70,
             width: 400,
             child: Padding(
@@ -40,14 +42,21 @@ class _MainUiViewState extends State<MainUiView> {
             height: 70,
             width: 400,
             child: Padding(
-              padding: EdgeInsets.all(16),
-              child: Text(
-                'Air Temperature: ',
-                style: TextStyle(
-                  color: Color.fromARGB(255, 0, 255, 0),
-                  fontSize: 25,
-                ),
-                textAlign: TextAlign.left,
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                children: [
+                  const Text(
+                    'Air Temperature: ',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 0, 255, 0),
+                      fontSize: 25,
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                  DataInstantMeasure(
+                    at: true,
+                  )
+                ],
               ),
             ),
           ),
@@ -55,14 +64,21 @@ class _MainUiViewState extends State<MainUiView> {
             height: 70,
             width: 400,
             child: Padding(
-              padding: EdgeInsets.all(16),
-              child: Text(
-                'Water Temperature: ',
-                style: TextStyle(
-                  color: Color.fromARGB(255, 0, 255, 0),
-                  fontSize: 25,
-                ),
-                textAlign: TextAlign.left,
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                children: [
+                  const Text(
+                    'Water Temperature: ',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 0, 255, 0),
+                      fontSize: 25,
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                  DataInstantMeasure(
+                    wt: true,
+                  )
+                ],
               ),
             ),
           ),
@@ -70,14 +86,21 @@ class _MainUiViewState extends State<MainUiView> {
             height: 70,
             width: 400,
             child: Padding(
-              padding: EdgeInsets.all(16),
-              child: Text(
-                'PH:  ',
-                style: TextStyle(
-                  color: Color.fromARGB(255, 0, 255, 0),
-                  fontSize: 25,
-                ),
-                textAlign: TextAlign.left,
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                children: [
+                  const Text(
+                    'PH:  ',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 0, 255, 0),
+                      fontSize: 25,
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                  DataInstantMeasure(
+                    ph: true,
+                  )
+                ],
               ),
             ),
           ),
@@ -85,18 +108,47 @@ class _MainUiViewState extends State<MainUiView> {
             height: 70,
             width: 400,
             child: Padding(
-              padding: EdgeInsets.all(16),
-              child: Text(
-                'Conductivity: ',
-                style: TextStyle(
-                  color: Color.fromARGB(255, 0, 255, 0),
-                  fontSize: 25,
-                ),
-                textAlign: TextAlign.left,
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                children: [
+                  const Text(
+                    'Conductivity: ',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 0, 255, 0),
+                      fontSize: 25,
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                  DataInstantMeasure(
+                    cd: true,
+                  )
+                ],
               ),
             ),
           ),
           SizedBox(
+            height: 70,
+            width: 400,
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                children: [
+                  const Text(
+                    'Humidity: ',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 0, 255, 0),
+                      fontSize: 25,
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                  DataInstantMeasure(
+                    hd: true,
+                  )
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(
             height: 70,
             width: 400,
             child: Padding(
