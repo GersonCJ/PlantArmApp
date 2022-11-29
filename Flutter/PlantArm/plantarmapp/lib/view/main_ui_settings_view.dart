@@ -94,6 +94,7 @@ class _DropdownPredefinedState extends State<DropdownPredefined> {
 List<DropdownMenuItem<String>> get dropdownItems {
   List<DropdownMenuItem<String>> menuItems = const [
     DropdownMenuItem(value: 'Choose...', child: Text('Choose...')),
+    DropdownMenuItem(value: 'OFF', child: Text('OFF')),
     DropdownMenuItem(value: 'VEG', child: Text('VEG')),
     DropdownMenuItem(value: 'BLOOM', child: Text('BLOOM')),
     DropdownMenuItem(value: 'VEG+BLOOM', child: Text('VEG+BLOOM')),
@@ -458,9 +459,24 @@ class _MainUiSettingsViewState extends State<MainUiSettingsView> {
                     'Verify if the values set were those desired. Correct them if you need and confirm by clicking in the "Set Values" button';
                 dialogOkBox(context, message, typeBox: 'Alert !');
               } else {
+                var dropdownConverion = '';
+                switch (valueDropdownLuminosity) {
+                  case ('OFF'):
+                    dropdownConverion = '0';
+                    break;
+                  case ('VEG'):
+                    dropdownConverion = '1';
+                    break;
+                  case ('BLOOM'):
+                    dropdownConverion = '2';
+                    break;
+                  case ('VEG+BLOOM'):
+                    dropdownConverion = '3';
+                    break;
+                }
                 final sendingValues = {
                   "t": temperature,
-                  "lum": valueDropdownLuminosity,
+                  "lum": dropdownConverion,
                   "p1": ph1,
                   "p2": ph2,
                   "c1": cond1,

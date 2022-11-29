@@ -15,8 +15,11 @@ class DataInstantMeasure extends StatelessWidget {
       this.cd = false,
       this.hd = false});
 
-  final Stream<QuerySnapshot> _ref =
-      FirebaseFirestore.instance.collection('/ReceivingValuesEsp').snapshots();
+  final Stream<QuerySnapshot> _ref = FirebaseFirestore.instance
+      .collection('/posts')
+      .doc('ReceivingValuesEsp')
+      .collection('.json')
+      .snapshots();
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
