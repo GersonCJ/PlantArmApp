@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:d_chart/d_chart.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class DataInstantMeasure extends StatelessWidget {
@@ -26,14 +28,27 @@ class DataInstantMeasure extends StatelessWidget {
         stream: _ref,
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
-            return const Text('Something went wrong');
+            return const Text(
+              'Something went wrong',
+              style: TextStyle(
+                color: Color.fromARGB(255, 0, 255, 0),
+                fontSize: 25,
+              ),
+            );
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Text("Loading");
+            return const Text(
+              "Loading",
+              style: TextStyle(
+                color: Color.fromARGB(255, 0, 255, 0),
+                fontSize: 25,
+              ),
+            );
           }
           final data = snapshot.data!.docs;
           List specificDoc = [];
           var counter = 0;
+          // Procura pelo maior counter
           for (int i = 0; i < data.length; i++) {
             if (int.parse(data[i]['ct']) > counter) {
               counter = int.parse(data[i]['ct']);

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:plantarmapp/support_widgets/futue_data_measure.dart';
+import 'package:plantarmapp/graph/model.dart';
+import 'package:plantarmapp/support_widgets/future_data_measure.dart';
 import 'package:plantarmapp/support_widgets/side_bar_leading.dart';
 
 class MainUiView extends StatefulWidget {
@@ -162,6 +163,9 @@ class _MainUiViewState extends State<MainUiView> {
               ),
             ),
           ),
+          const Expanded(
+            child: GraphTest(),
+          )
         ],
       ),
     );
