@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
@@ -175,7 +173,7 @@ class GraphMeasure extends StatelessWidget {
               }
             }
             domain = domainFlag;
-            tempo = 'Dias';
+            tempo = 'Days';
             measureAt = measureAtFlag;
             measureWt = measureWtFlag;
             measurePh = measurePhFlag;
@@ -285,7 +283,7 @@ class GraphMeasure extends StatelessWidget {
                                   axisLine: const AxisLine(width: 0),
                                   majorTickLines: const MajorTickLines(size: 0),
                                   title: AxisTitle(
-                                      text: 'Conductivity',
+                                      text: 'Conductivity (ppm)',
                                       textStyle: const TextStyle(
                                           color:
                                               Color.fromARGB(255, 0, 255, 0)))),
@@ -323,7 +321,7 @@ class GraphMeasure extends StatelessWidget {
                                       majorTickLines:
                                           const MajorTickLines(size: 0),
                                       title: AxisTitle(
-                                          text: 'Humidity',
+                                          text: 'Humidity (%)',
                                           textStyle: const TextStyle(
                                               color: Color.fromARGB(
                                                   255, 0, 255, 0)))),

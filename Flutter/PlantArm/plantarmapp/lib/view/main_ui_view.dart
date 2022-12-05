@@ -135,7 +135,14 @@ class _MainUiViewState extends State<MainUiView> {
                   ),
                   DataInstantMeasure(
                     cd: true,
-                  )
+                  ),
+                  const Text(
+                    ' ppm',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 0, 255, 0),
+                      fontSize: 25,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -157,7 +164,14 @@ class _MainUiViewState extends State<MainUiView> {
                   ),
                   DataInstantMeasure(
                     hd: true,
-                  )
+                  ),
+                  const Text(
+                    ' %',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 0, 255, 0),
+                      fontSize: 25,
+                    ),
+                  ),
                 ],
               ),
             ),
