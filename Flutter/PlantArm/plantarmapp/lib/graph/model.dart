@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
@@ -16,13 +18,13 @@ List<GraphPoints> graphPoints(List dominio, List medida) {
       .toList();
 }
 
-class GraphTest extends StatelessWidget {
+class GraphMeasure extends StatelessWidget {
   final bool temp;
   final bool ph;
   final bool cd;
   final bool hd;
 
-  GraphTest(
+  GraphMeasure(
       {this.temp = false, this.ph = false, this.cd = false, this.hd = false});
 
   // const GraphTest({super.key});
@@ -192,14 +194,24 @@ class GraphTest extends StatelessWidget {
                             xValueMapper: (GraphPoints temperature, _) =>
                                 temperature.x,
                             yValueMapper: (GraphPoints temperature, _) =>
-                                temperature.y),
+                                temperature.y,
+                            name: 'Air\nTemperature'),
                         LineSeries(
                             dataSource: graphPoints(domain, measureWt),
                             xValueMapper: (GraphPoints temperature, _) =>
                                 temperature.x,
                             yValueMapper: (GraphPoints temperature, _) =>
-                                temperature.y)
+                                temperature.y,
+                            name: 'Water\nTemperature'),
                       ],
+                      title: ChartTitle(
+                          text: 'Continuous Temperature Measuring',
+                          textStyle: const TextStyle(
+                              color: Color.fromARGB(255, 0, 255, 0))),
+                      legend: Legend(
+                          isVisible: true,
+                          textStyle: const TextStyle(
+                              color: Color.fromARGB(255, 0, 255, 0))),
                       primaryXAxis: NumericAxis(
                           majorGridLines: const MajorGridLines(width: 0),
                           edgeLabelPlacement: EdgeLabelPlacement.shift,
@@ -225,6 +237,10 @@ class GraphTest extends StatelessWidget {
                                 yValueMapper: (GraphPoints temperature, _) =>
                                     temperature.y),
                           ],
+                          title: ChartTitle(
+                              text: 'Continuous PH Measuring',
+                              textStyle: const TextStyle(
+                                  color: Color.fromARGB(255, 0, 255, 0))),
                           primaryXAxis: NumericAxis(
                               majorGridLines: const MajorGridLines(width: 0),
                               edgeLabelPlacement: EdgeLabelPlacement.shift,
@@ -252,6 +268,10 @@ class GraphTest extends StatelessWidget {
                                         (GraphPoints temperature, _) =>
                                             temperature.y),
                               ],
+                              title: ChartTitle(
+                                  text: 'Continuous Conductivity Measuring',
+                                  textStyle: const TextStyle(
+                                      color: Color.fromARGB(255, 0, 255, 0))),
                               primaryXAxis: NumericAxis(
                                   majorGridLines:
                                       const MajorGridLines(width: 0),
@@ -275,7 +295,7 @@ class GraphTest extends StatelessWidget {
                                   series: [
                                     LineSeries(
                                         dataSource:
-                                            graphPoints(domain, measurePh),
+                                            graphPoints(domain, measureHd),
                                         xValueMapper:
                                             (GraphPoints temperature, _) =>
                                                 temperature.x,
@@ -283,6 +303,11 @@ class GraphTest extends StatelessWidget {
                                             (GraphPoints temperature, _) =>
                                                 temperature.y),
                                   ],
+                                  title: ChartTitle(
+                                      text: 'Continuous Humidity Measuring',
+                                      textStyle: const TextStyle(
+                                          color:
+                                              Color.fromARGB(255, 0, 255, 0))),
                                   primaryXAxis: NumericAxis(
                                       majorGridLines:
                                           const MajorGridLines(width: 0),

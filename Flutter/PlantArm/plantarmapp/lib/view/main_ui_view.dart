@@ -21,7 +21,7 @@ class _MainUiViewState extends State<MainUiView> {
         foregroundColor: const Color.fromARGB(255, 0, 255, 0),
       ),
       backgroundColor: const Color.fromARGB(255, 0, 45, 0),
-      body: Column(
+      body: ListView(
         children: [
           const SizedBox(
             height: 70,
@@ -55,7 +55,14 @@ class _MainUiViewState extends State<MainUiView> {
                   ),
                   DataInstantMeasure(
                     at: true,
-                  )
+                  ),
+                  const Text(
+                    ' °C',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 0, 255, 0),
+                      fontSize: 25,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -77,7 +84,14 @@ class _MainUiViewState extends State<MainUiView> {
                   ),
                   DataInstantMeasure(
                     wt: true,
-                  )
+                  ),
+                  const Text(
+                    ' °C',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 0, 255, 0),
+                      fontSize: 25,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -163,11 +177,14 @@ class _MainUiViewState extends State<MainUiView> {
               ),
             ),
           ),
-          Expanded(
-            child: GraphTest(
-              temp: true,
-            ),
-          )
+          GraphMeasure(
+            temp: true,
+          ),
+          GraphMeasure(
+            ph: true,
+          ),
+          GraphMeasure(cd: true),
+          GraphMeasure(hd: true),
         ],
       ),
     );
