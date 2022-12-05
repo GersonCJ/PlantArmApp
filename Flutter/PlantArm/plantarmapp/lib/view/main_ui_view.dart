@@ -163,8 +163,10 @@ class _MainUiViewState extends State<MainUiView> {
               ),
             ),
           ),
-          const Expanded(
-            child: GraphTest(),
+          Expanded(
+            child: GraphTest(
+              temp: true,
+            ),
           )
         ],
       ),

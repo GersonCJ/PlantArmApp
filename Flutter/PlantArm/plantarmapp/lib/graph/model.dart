@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'dart:core';
@@ -18,7 +17,15 @@ List<GraphPoints> graphPoints(List dominio, List medida) {
 }
 
 class GraphTest extends StatelessWidget {
-  const GraphTest({super.key});
+  final bool temp;
+  final bool ph;
+  final bool cd;
+  final bool hd;
+
+  GraphTest(
+      {this.temp = false, this.ph = false, this.cd = false, this.hd = false});
+
+  // const GraphTest({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -83,6 +90,7 @@ class GraphTest extends StatelessWidget {
             measureHd.add(ordenados[i]['hd']);
           }
           // Adicionar Escalabilidade de gráfico em função do tempo (horas, dias)
+          String tempo = 'Minutes';
           List domainFlag = [];
           late List measureAtFlag = [];
           late List measureWtFlag = [];
@@ -127,6 +135,7 @@ class GraphTest extends StatelessWidget {
               }
             }
             domain = domainFlag;
+            tempo = 'Hours';
             measureAt = measureAtFlag;
             measureWt = measureWtFlag;
             measurePh = measurePhFlag;
@@ -164,6 +173,7 @@ class GraphTest extends StatelessWidget {
               }
             }
             domain = domainFlag;
+            tempo = 'Dias';
             measureAt = measureAtFlag;
             measureWt = measureWtFlag;
             measurePh = measurePhFlag;
@@ -173,14 +183,127 @@ class GraphTest extends StatelessWidget {
 
           // Building Points
 
-          return SfCartesianChart(
-            series: [
-              LineSeries(
-                  dataSource: graphPoints(domain, measureAt),
-                  xValueMapper: (GraphPoints temperature, _) => temperature.x,
-                  yValueMapper: (GraphPoints temperature, _) => temperature.y),
-            ],
-          );
+          return Container(
+              child: (temp == true
+                  ? SfCartesianChart(
+                      series: [
+                        LineSeries(
+                            dataSource: graphPoints(domain, measureAt),
+                            xValueMapper: (GraphPoints temperature, _) =>
+                                temperature.x,
+                            yValueMapper: (GraphPoints temperature, _) =>
+                                temperature.y),
+                        LineSeries(
+                            dataSource: graphPoints(domain, measureWt),
+                            xValueMapper: (GraphPoints temperature, _) =>
+                                temperature.x,
+                            yValueMapper: (GraphPoints temperature, _) =>
+                                temperature.y)
+                      ],
+                      primaryXAxis: NumericAxis(
+                          majorGridLines: const MajorGridLines(width: 0),
+                          edgeLabelPlacement: EdgeLabelPlacement.shift,
+                          title: AxisTitle(
+                              text: 'Time ($tempo)',
+                              textStyle: const TextStyle(
+                                  color: Color.fromARGB(255, 0, 255, 0)))),
+                      primaryYAxis: NumericAxis(
+                          axisLine: const AxisLine(width: 0),
+                          majorTickLines: const MajorTickLines(size: 0),
+                          title: AxisTitle(
+                              text: 'Temperature (°C)',
+                              textStyle: const TextStyle(
+                                  color: Color.fromARGB(255, 0, 255, 0)))),
+                    )
+                  : ph == true
+                      ? SfCartesianChart(
+                          series: [
+                            LineSeries(
+                                dataSource: graphPoints(domain, measurePh),
+                                xValueMapper: (GraphPoints temperature, _) =>
+                                    temperature.x,
+                                yValueMapper: (GraphPoints temperature, _) =>
+                                    temperature.y),
+                          ],
+                          primaryXAxis: NumericAxis(
+                              majorGridLines: const MajorGridLines(width: 0),
+                              edgeLabelPlacement: EdgeLabelPlacement.shift,
+                              title: AxisTitle(
+                                  text: 'Time ($tempo)',
+                                  textStyle: const TextStyle(
+                                      color: Color.fromARGB(255, 0, 255, 0)))),
+                          primaryYAxis: NumericAxis(
+                              axisLine: const AxisLine(width: 0),
+                              majorTickLines: const MajorTickLines(size: 0),
+                              title: AxisTitle(
+                                  text: 'PH',
+                                  textStyle: const TextStyle(
+                                      color: Color.fromARGB(255, 0, 255, 0)))),
+                        )
+                      : cd == true
+                          ? SfCartesianChart(
+                              series: [
+                                LineSeries(
+                                    dataSource: graphPoints(domain, measureCd),
+                                    xValueMapper:
+                                        (GraphPoints temperature, _) =>
+                                            temperature.x,
+                                    yValueMapper:
+                                        (GraphPoints temperature, _) =>
+                                            temperature.y),
+                              ],
+                              primaryXAxis: NumericAxis(
+                                  majorGridLines:
+                                      const MajorGridLines(width: 0),
+                                  edgeLabelPlacement: EdgeLabelPlacement.shift,
+                                  title: AxisTitle(
+                                      text: 'Tempo ($tempo)',
+                                      textStyle: const TextStyle(
+                                          color:
+                                              Color.fromARGB(255, 0, 255, 0)))),
+                              primaryYAxis: NumericAxis(
+                                  axisLine: const AxisLine(width: 0),
+                                  majorTickLines: const MajorTickLines(size: 0),
+                                  title: AxisTitle(
+                                      text: 'Conductivity',
+                                      textStyle: const TextStyle(
+                                          color:
+                                              Color.fromARGB(255, 0, 255, 0)))),
+                            )
+                          : hd == true
+                              ? SfCartesianChart(
+                                  series: [
+                                    LineSeries(
+                                        dataSource:
+                                            graphPoints(domain, measurePh),
+                                        xValueMapper:
+                                            (GraphPoints temperature, _) =>
+                                                temperature.x,
+                                        yValueMapper:
+                                            (GraphPoints temperature, _) =>
+                                                temperature.y),
+                                  ],
+                                  primaryXAxis: NumericAxis(
+                                      majorGridLines:
+                                          const MajorGridLines(width: 0),
+                                      edgeLabelPlacement:
+                                          EdgeLabelPlacement.shift,
+                                      title: AxisTitle(
+                                          text: 'Tempo ($tempo)',
+                                          textStyle: const TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 0, 255, 0)))),
+                                  primaryYAxis: NumericAxis(
+                                      axisLine: const AxisLine(width: 0),
+                                      majorTickLines:
+                                          const MajorTickLines(size: 0),
+                                      title: AxisTitle(
+                                          text: 'Humidity',
+                                          textStyle: const TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 0, 255, 0)))),
+                                )
+                              : null));
         });
   }
 }
