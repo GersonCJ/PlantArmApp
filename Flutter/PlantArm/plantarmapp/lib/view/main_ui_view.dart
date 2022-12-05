@@ -1,6 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:plantarmapp/support_widgets/futue_data_measure.dart';
+import 'package:plantarmapp/graph/model.dart';
+import 'package:plantarmapp/support_widgets/future_data_measure.dart';
 import 'package:plantarmapp/support_widgets/side_bar_leading.dart';
 
 class MainUiView extends StatefulWidget {
@@ -21,7 +21,7 @@ class _MainUiViewState extends State<MainUiView> {
         foregroundColor: const Color.fromARGB(255, 0, 255, 0),
       ),
       backgroundColor: const Color.fromARGB(255, 0, 45, 0),
-      body: Column(
+      body: ListView(
         children: [
           const SizedBox(
             height: 70,
@@ -55,7 +55,14 @@ class _MainUiViewState extends State<MainUiView> {
                   ),
                   DataInstantMeasure(
                     at: true,
-                  )
+                  ),
+                  const Text(
+                    ' °C',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 0, 255, 0),
+                      fontSize: 25,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -77,7 +84,14 @@ class _MainUiViewState extends State<MainUiView> {
                   ),
                   DataInstantMeasure(
                     wt: true,
-                  )
+                  ),
+                  const Text(
+                    ' °C',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 0, 255, 0),
+                      fontSize: 25,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -121,7 +135,14 @@ class _MainUiViewState extends State<MainUiView> {
                   ),
                   DataInstantMeasure(
                     cd: true,
-                  )
+                  ),
+                  const Text(
+                    ' ppm',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 0, 255, 0),
+                      fontSize: 25,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -143,7 +164,14 @@ class _MainUiViewState extends State<MainUiView> {
                   ),
                   DataInstantMeasure(
                     hd: true,
-                  )
+                  ),
+                  const Text(
+                    ' %',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 0, 255, 0),
+                      fontSize: 25,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -163,6 +191,14 @@ class _MainUiViewState extends State<MainUiView> {
               ),
             ),
           ),
+          GraphMeasure(
+            temp: true,
+          ),
+          GraphMeasure(
+            ph: true,
+          ),
+          GraphMeasure(cd: true),
+          GraphMeasure(hd: true),
         ],
       ),
     );

@@ -15,22 +15,38 @@ class DataInstantMeasure extends StatelessWidget {
       this.cd = false,
       this.hd = false});
 
-  final Stream<QuerySnapshot> _ref =
-      FirebaseFirestore.instance.collection('/ReceivingValuesEsp').snapshots();
+  final Stream<QuerySnapshot> _ref = FirebaseFirestore.instance
+      .collection('/posts')
+      .doc('ReceivingValuesEsp')
+      .collection('.json')
+      .snapshots();
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
         stream: _ref,
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
-            return const Text('Something went wrong');
+            return const Text(
+              'Something went wrong',
+              style: TextStyle(
+                color: Color.fromARGB(255, 0, 255, 0),
+                fontSize: 25,
+              ),
+            );
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Text("Loading");
+            return const Text(
+              "Loading",
+              style: TextStyle(
+                color: Color.fromARGB(255, 0, 255, 0),
+                fontSize: 25,
+              ),
+            );
           }
           final data = snapshot.data!.docs;
           List specificDoc = [];
           var counter = 0;
+          // Procura pelo maior counter
           for (int i = 0; i < data.length; i++) {
             if (int.parse(data[i]['ct']) > counter) {
               counter = int.parse(data[i]['ct']);
