@@ -15,42 +15,46 @@ class HomePage extends StatelessWidget {
           backgroundColor: const Color.fromARGB(255, 0, 45, 0),
           foregroundColor: const Color.fromARGB(255, 0, 255, 0),
         ),
+        backgroundColor: const Color.fromARGB(255, 0, 45, 0),
         body: FutureBuilder(
             future: Firebase.initializeApp(
                 options: DefaultFirebaseOptions.currentPlatform),
             builder: (context, snapshot) {
               switch (snapshot.connectionState) {
                 case ConnectionState.done:
-                  return Column(
+                  return ListView(
                     children: [
-                      TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const RegisterView()));
-                          },
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(
-                                  const Color.fromARGB(255, 0, 45, 0)),
-                              foregroundColor: MaterialStateProperty.all(
-                                  const Color.fromARGB(255, 0, 255, 0))),
-                          child: const Text('Register')),
-                      TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const LoginView(),
-                                ));
-                          },
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(
-                                  const Color.fromARGB(255, 0, 45, 0)),
-                              foregroundColor: MaterialStateProperty.all(
-                                  const Color.fromARGB(255, 0, 255, 0))),
-                          child: const Text('Login'))
+                      const SizedBox(height: 220, child: Text('')),
+                      const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: LoginView(),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 110.0),
+                        child: Row(
+                          children: [
+                            const Text(
+                              'Not registered yet?',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(color: Colors.yellow),
+                            ),
+                            TextButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const RegisterView()));
+                                },
+                                style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(
+                                        const Color.fromARGB(255, 0, 45, 0)),
+                                    foregroundColor: MaterialStateProperty.all(
+                                        const Color.fromARGB(255, 0, 255, 0))),
+                                child: const Text('Register here !')),
+                          ],
+                        ),
+                      ),
                     ],
                   );
                 default:
