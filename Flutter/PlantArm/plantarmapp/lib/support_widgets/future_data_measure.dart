@@ -45,7 +45,7 @@ class DataInstantMeasure extends StatelessWidget {
           }
           final data = snapshot.data!.docs;
           List specificDoc = [];
-          var counter = 0;
+          int counter = 0;
           // Procura pelo maior counter
           for (int i = 0; i < data.length; i++) {
             if (int.parse(data[i]['ct']) > counter) {

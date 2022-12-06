@@ -9,7 +9,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized;
   runApp(
     MaterialApp(
-        title: 'Flutter Demo',
+        title: 'HydroPlant App',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
