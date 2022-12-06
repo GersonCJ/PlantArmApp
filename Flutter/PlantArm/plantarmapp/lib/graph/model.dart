@@ -108,11 +108,11 @@ class GraphMeasure extends StatelessWidget {
             int domainFlagItem = 1;
             for (int i = 0; i < domain.length; i++) {
               flagHoras += 1;
-              measureAtFlagItem += int.parse(measureAt[i]);
-              measureWtFlagItem += int.parse(measureWt[i]);
-              measurePhFlagItem += int.parse(measurePh[i]);
-              measureCdFlagItem += int.parse(measureCd[i]);
-              measureHdFlagItem += int.parse(measureHd[i]);
+              measureAtFlagItem += num.parse(measureAt[i]);
+              measureWtFlagItem += num.parse(measureWt[i]);
+              measurePhFlagItem += num.parse(measurePh[i]);
+              measureCdFlagItem += num.parse(measureCd[i]);
+              measureHdFlagItem += num.parse(measureHd[i]);
               if (flagHoras == 12) {
                 measureAtFlagItem /= 12;
                 measureWtFlagItem /= 12;
