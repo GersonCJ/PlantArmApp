@@ -53,6 +53,11 @@ class DataInstantMeasure extends StatelessWidget {
               specificDoc.add(data[i]);
             }
           }
+          final lastCounter = {"ct": counter};
+          FirebaseFirestore.instance
+              .collection('/SettingLastCounter')
+              .doc('Value')
+              .set(lastCounter);
           final query = specificDoc[specificDoc.length - 1];
           return Container(
             child: (wt == true
