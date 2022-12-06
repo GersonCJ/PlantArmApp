@@ -275,7 +275,7 @@ class GraphMeasure extends StatelessWidget {
                                       const MajorGridLines(width: 0),
                                   edgeLabelPlacement: EdgeLabelPlacement.shift,
                                   title: AxisTitle(
-                                      text: 'Tempo ($tempo)',
+                                      text: 'Time ($tempo)',
                                       textStyle: const TextStyle(
                                           color:
                                               Color.fromARGB(255, 0, 255, 0)))),
@@ -312,7 +312,7 @@ class GraphMeasure extends StatelessWidget {
                                       edgeLabelPlacement:
                                           EdgeLabelPlacement.shift,
                                       title: AxisTitle(
-                                          text: 'Tempo ($tempo)',
+                                          text: 'Time ($tempo)',
                                           textStyle: const TextStyle(
                                               color: Color.fromARGB(
                                                   255, 0, 255, 0)))),
