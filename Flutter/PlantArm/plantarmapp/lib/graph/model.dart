@@ -70,11 +70,12 @@ class GraphMeasure extends StatelessWidget {
             }
           }
           // Construir o Dominio do mesmo tamanho da data.
-          num tempoDeEnvio = 5;
+          const tempRef = 1; // Only thing to modify!!!
+          num tempoDeEnvio = tempRef;
           List domain = [];
           for (int i = 0; i < data.length; i++) {
             domain.add(tempoDeEnvio);
-            tempoDeEnvio += 5;
+            tempoDeEnvio += tempRef;
           }
           // Construir o Measure de cada parâmetro.
           List measureAt = [];
@@ -90,6 +91,8 @@ class GraphMeasure extends StatelessWidget {
             measureHd.add(ordenados[i]['hd']);
           }
           // Adicionar Escalabilidade de gráfico em função do tempo (horas, dias)
+          const hoursEscalation_3 = 3 * 60 / tempRef;
+          const daysEscalation_3 = 3 * 24 * 60 / tempRef;
           String tempo = 'Minutes';
           List domainFlag = [];
           late List measureAtFlag = [];
@@ -103,8 +106,10 @@ class GraphMeasure extends StatelessWidget {
           num measureCdFlagItem = 0;
           num measureHdFlagItem = 0;
           // Flag Horas - if / Flag Days - else if
-          if (36 <= domain.length && domain.length < 864) {
+          if (hoursEscalation_3 <= domain.length &&
+              domain.length < daysEscalation_3) {
             int flagHoras = 0;
+            const flagHoursRef = 60 / tempRef;
             int domainFlagItem = 1;
             for (int i = 0; i < domain.length; i++) {
               flagHoras += 1;
@@ -113,12 +118,12 @@ class GraphMeasure extends StatelessWidget {
               measurePhFlagItem += num.parse(measurePh[i]);
               measureCdFlagItem += num.parse(measureCd[i]);
               measureHdFlagItem += num.parse(measureHd[i]);
-              if (flagHoras == 12) {
-                measureAtFlagItem /= 12;
-                measureWtFlagItem /= 12;
-                measurePhFlagItem /= 12;
-                measureCdFlagItem /= 12;
-                measureHdFlagItem /= 12;
+              if (flagHoras == flagHoursRef) {
+                measureAtFlagItem /= flagHoursRef;
+                measureWtFlagItem /= flagHoursRef;
+                measurePhFlagItem /= flagHoursRef;
+                measureCdFlagItem /= flagHoursRef;
+                measureHdFlagItem /= flagHoursRef;
                 measureAtFlag.add(measureAtFlagItem.toString());
                 measureWtFlag.add(measureWtFlagItem.toString());
                 measurePhFlag.add(measurePhFlagItem.toString());
@@ -141,8 +146,9 @@ class GraphMeasure extends StatelessWidget {
             measurePh = measurePhFlag;
             measureCd = measureCdFlag;
             measureHd = measureHdFlag;
-          } else if (domain.length >= 864) {
+          } else if (domain.length >= daysEscalation_3) {
             int flagDays = 0;
+            const flagDaysRef = 24 * 60 / tempRef;
             int domainFlagItem = 1;
             for (int i = 0; i < domain.length; i++) {
               flagDays += 1;
@@ -151,12 +157,12 @@ class GraphMeasure extends StatelessWidget {
               measurePhFlagItem += num.parse(measurePh[i]);
               measureCdFlagItem += num.parse(measureCd[i]);
               measureHdFlagItem += num.parse(measureHd[i]);
-              if (flagDays == 288) {
-                measureAtFlagItem /= 288;
-                measureWtFlagItem /= 288;
-                measurePhFlagItem /= 288;
-                measureCdFlagItem /= 288;
-                measureHdFlagItem /= 288;
+              if (flagDays == flagDaysRef) {
+                measureAtFlagItem /= flagDaysRef;
+                measureWtFlagItem /= flagDaysRef;
+                measurePhFlagItem /= flagDaysRef;
+                measureCdFlagItem /= flagDaysRef;
+                measureHdFlagItem /= flagDaysRef;
                 measureAtFlag.add(measureAtFlagItem.toString());
                 measureWtFlag.add(measureWtFlagItem.toString());
                 measurePhFlag.add(measurePhFlagItem.toString());
