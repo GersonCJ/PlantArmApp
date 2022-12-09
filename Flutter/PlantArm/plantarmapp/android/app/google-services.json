@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "173367826986",
-    "firebase_url": "https://plant-arm-project-default-rtdb.europe-west1.firebasedatabase.app",
-    "project_id": "plant-arm-project",
-    "storage_bucket": "plant-arm-project.appspot.com"
+    "project_number": "881784335917",
+    "firebase_url": "https://hydroplant-da2dd-default-rtdb.firebaseio.com",
+    "project_id": "hydroplant-da2dd",
+    "storage_bucket": "hydroplant-da2dd.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:173367826986:android:f7e432fb4fd612828c8153",
+        "mobilesdk_app_id": "1:881784335917:android:3d301b3f3516903ade92a4",
         "android_client_info": {
           "package_name": "com.plantarmgroup.plantarmapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "173367826986-01s91jche4f56nsdkapebj6pnf5i32b7.apps.googleusercontent.com",
+          "client_id": "881784335917-lakq7fcemvk6gv98dbpppa52ml1plnl5.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCyDMEBVIO-kxZxl2F5pRgAa34TDye5ExU"
+          "current_key": "AIzaSyCR9uWpu1Z9eftoncHarFBkupWLlKDuew0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "173367826986-01s91jche4f56nsdkapebj6pnf5i32b7.apps.googleusercontent.com",
+              "client_id": "881784335917-lakq7fcemvk6gv98dbpppa52ml1plnl5.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
