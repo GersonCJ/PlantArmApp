@@ -69,11 +69,13 @@ class GraphMeasure extends StatelessWidget {
               }
             }
           }
+          final ordenados2 = {...ordenados};
+          ordenados = [...ordenados2];
           // Construir o Dominio do mesmo tamanho da data.
           const tempRef = 1; // Only thing to modify!!!
           num tempoDeEnvio = tempRef;
           List domain = [];
-          for (int i = 0; i < data.length; i++) {
+          for (int i = 0; i < ordenados.length; i++) {
             domain.add(tempoDeEnvio);
             tempoDeEnvio += tempRef;
           }
