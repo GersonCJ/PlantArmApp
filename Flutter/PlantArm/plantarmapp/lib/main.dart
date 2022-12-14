@@ -5,6 +5,8 @@ import 'package:plantarmapp/view/main_ui_settings_view.dart';
 import 'package:plantarmapp/view/main_ui_view.dart';
 import 'package:plantarmapp/view/register_view.dart';
 
+import 'constants/const.dart';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized;
   runApp(
@@ -15,10 +17,10 @@ void main() {
         ),
         home: const HomePage(),
         routes: {
-          '/login/': (context) => const LoginView(),
-          '/register/': (context) => const RegisterView(),
-          '/mainui/': (context) => const MainUiView(),
-          '/mainuisettings/': (context) => const MainUiSettingsView(),
+          loginRoute: (context) => const LoginView(),
+          registerRoute: (context) => const RegisterView(),
+          mainuiRoute: (context) => const MainUiView(),
+          mainuiSettingsRoute: (context) => const MainUiSettingsView(),
         }),
   );
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../constants/const.dart';
 
 class SideBar extends StatelessWidget {
   const SideBar({super.key});
@@ -17,28 +18,23 @@ class SideBar extends StatelessWidget {
               image: DecorationImage(
                 image: AssetImage('assets/images/hydroplant.png'),
                 fit: BoxFit.cover,
-                ),
+              ),
             ),
             child: Text(''),
           ),
           ListTile(
             leading: const Icon(Icons.bar_chart),
-            title: const Text(
-              'Statistics',
-              style: TextStyle(
-                fontSize: 20.0
-              )),
+            title: const Text('Statistics', style: TextStyle(fontSize: 20.0)),
             textColor: const Color.fromARGB(255, 0, 255, 0),
             iconColor: const Color.fromARGB(255, 0, 255, 0),
             onTap: () {
-              if(ModalRoute.of(context)?.settings.name == '/mainui/'){
+              if (ModalRoute.of(context)?.settings.name == mainuiRoute) {
                 Navigator.pop(context);
-              }else{
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                '/mainui/',
-                (route) => false);
+              } else {
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil(mainuiRoute, (route) => false);
               }
-              },
+            },
           ),
           const Divider(
             thickness: 2.0,
@@ -47,21 +43,20 @@ class SideBar extends StatelessWidget {
             leading: const Icon(Icons.settings),
             title: const Text(
               'Module Settings',
-              style: TextStyle(
-                fontSize: 20.0
-              ),),
+              style: TextStyle(fontSize: 20.0),
+            ),
             // selectedTileColor: const Color.fromARGB(255, 251, 255, 0),
             textColor: const Color.fromARGB(255, 0, 255, 0),
             iconColor: const Color.fromARGB(255, 0, 255, 0),
             onTap: () {
-              if(ModalRoute.of(context)?.settings.name == '/mainuisettings/'){
+              if (ModalRoute.of(context)?.settings.name ==
+                  mainuiSettingsRoute) {
                 Navigator.pop(context);
-              }else{
+              } else {
                 Navigator.of(context).pushNamedAndRemoveUntil(
-                '/mainuisettings/',
-                (route) => false);
+                    mainuiSettingsRoute, (route) => false);
               }
-              },
+            },
           ),
         ],
       ),
